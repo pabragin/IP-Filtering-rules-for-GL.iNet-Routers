@@ -10,6 +10,7 @@ steamserver.net
 levenhuk.com
 weborama-tech.ru
 yandexcloud.net
+apple.com
 tiera.org
 aaplimg.com
 cdn-apple.com
@@ -20,6 +21,7 @@ plex.tv
 crashlytics.com
 vk-analytics.ru
 doubleclick.net
+icloud.com
 2.56.24.0/22
 2.56.88.0/22
 2.56.180.0/22
