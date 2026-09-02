@@ -1,7 +1,6 @@
 gismeteo.st
 mkb.ru
 page.link
-psbank.ru
 rtbcdn.ru
 steam.com
 steamcommunity.com
