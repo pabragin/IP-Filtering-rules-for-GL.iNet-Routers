@@ -20,6 +20,12 @@ steamcommunity.com
 steamcontent.com
 steampowered.com
 steamserver.net
+# Загрузка игр: Steam раздаёт контент через чужие CDN. Хосты вида
+# *.steampipe.steamcontent.com и cache*-*.steamcontent.com уже покрыты записью
+# steamcontent.com (роутер матчит по суффиксу), а вот Akamai-хост живёт в
+# отдельной зоне, поэтому нужен явно. Апекс akamaized.net добавлять НЕЛЬЗЯ:
+# на нём сидят все клиенты Akamai, а не только Steam.
+steampipe.akamaized.net
 levenhuk.com
 weborama-tech.ru
 yandexcloud.net

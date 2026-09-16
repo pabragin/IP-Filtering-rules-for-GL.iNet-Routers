@@ -7,6 +7,7 @@ steamcommunity.com
 steamcontent.com
 steampowered.com
 steamserver.net
+steampipe.akamaized.net
 levenhuk.com
 weborama-tech.ru
 yandexcloud.net
