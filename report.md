@@ -1,7 +1,7 @@
 # Отчёт сборки filter.txt
 
 - Подсетей IPv4: **8731**, IPv6: **2196**
-- Доменов в источнике: **32**, оставлено в filter.txt: **31**, покрыто подсетями (исключено): **1**
+- Доменов в источнике: **34**, оставлено в filter.txt: **33**, покрыто подсетями (исключено): **1**
 
 ## Исключённые домены (все адреса уже внутри подсетей)
 
@@ -14,6 +14,7 @@
 - `steamcommunity.com`
 - `steampowered.com`
 - `steampipe.akamaized.net`
+- `steambroadcast.akamaized.net`
 - `battle.net`
 - `blizzard.com`
 - `battlenet.com.cn`
@@ -38,6 +39,7 @@
 - `steam.com`
 - `steamcontent.com`
 - `steamserver.net`
+- `steamstatic.com`
 - `yandexcloud.net`
 - `aaplimg.com`
 - `cdn-apple.com`

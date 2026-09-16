@@ -8,6 +8,8 @@ steamcontent.com
 steampowered.com
 steamserver.net
 steampipe.akamaized.net
+steamstatic.com
+steambroadcast.akamaized.net
 battle.net
 blizzard.com
 battlenet.com.cn

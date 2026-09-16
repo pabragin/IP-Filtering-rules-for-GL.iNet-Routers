@@ -26,6 +26,12 @@ steamserver.net
 # отдельной зоне, поэтому нужен явно. Апекс akamaized.net добавлять НЕЛЬЗЯ:
 # на нём сидят все клиенты Akamai, а не только Steam.
 steampipe.akamaized.net
+# Статика магазина: картинки, аватары, обложки игр. Живёт на Akamai и
+# Fastly, подсетями не покрыть. Одна запись закрывает все поддомены вида
+# cdn.cloudflare.steamstatic.com и avatars.steamstatic.com.
+steamstatic.com
+# Трансляции Steam (Steam Broadcast) — отдельная зона на Akamai.
+steambroadcast.akamaized.net
 # Blizzard / Battle.net — Diablo и прочие игры. Игровые серверы покрыты
 # подсетями AS57976 в custom-subnets.txt, но вход в аккаунт, патчи и
 # загрузка контента живут на Amazon/Google/Akamai — их берём доменами.
