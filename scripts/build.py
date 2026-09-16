@@ -4,9 +4,14 @@
 Шаги:
 1. Скачивает актуальные российские подсети IPv4/IPv6 (данные RIPE через ipverse).
 2. Добавляет ручные подсети из data/custom-subnets.txt и агрегирует всё.
-3. Резолвит каждый домен из data/domains.txt:
-   - все адреса внутри итоговых подсетей -> домен покрыт, в filter.txt не пишется;
+3. Резолвит каждый домен из data/domains.txt, а также его www-поддомен:
+   - все адреса (апекса И www) внутри итоговых подсетей -> домен покрыт,
+     в filter.txt не пишется;
    - хотя бы один адрес снаружи (или домен не резолвится) -> домен остаётся.
+   www проверяется отдельно, потому что у ряда сервисов апекс живёт на своих
+   адресах, а www отдаётся сторонним CDN (например, apple.com против
+   www.apple.com). Запись апекса матчится роутером по суффиксу и покрывает
+   поддомены, поэтому исключать её можно, только когда www тоже покрыт.
 4. Пишет filter.txt (домены + IPv4 + IPv6, по одной записи на строку)
    и report.md с результатами проверки покрытия.
 """
@@ -48,6 +53,20 @@ def resolve(domain: str) -> list[ipaddress._BaseAddress] | None:
     return sorted({ipaddress.ip_address(i[4][0]) for i in infos}, key=str)
 
 
+def resolve_with_www(domain: str) -> tuple[list | None, list | None]:
+    """Адреса апекса и его www-поддомена.
+
+    Роутер матчит домены по суффиксу, поэтому запись апекса покрывает и www.
+    Значит, исключать апекс из filter.txt допустимо, только если и www-адреса
+    попадают в подсети: иначе трафик на www уйдёт мимо правила.
+    Для доменов, которые сами начинаются с www., поддомен не запрашивается.
+    """
+    apex = resolve(domain)
+    if domain.startswith("www."):
+        return apex, None
+    return apex, resolve("www." + domain)
+
+
 def main() -> int:
     ru_v4 = [ipaddress.ip_network(l) for l in fetch_lines(RU_IPV4_URL)]
     ru_v6 = [ipaddress.ip_network(l) for l in fetch_lines(RU_IPV6_URL)]
@@ -65,15 +84,15 @@ def main() -> int:
 
     domains = read_list(ROOT / "data" / "domains.txt")
     with ThreadPoolExecutor(DNS_WORKERS) as pool:
-        resolved = dict(zip(domains, pool.map(resolve, domains)))
+        resolved = dict(zip(domains, pool.map(resolve_with_www, domains)))
 
     kept, dropped, unresolved = [], [], []
     for d in domains:
-        ips = resolved[d]
+        ips, www_ips = resolved[d]
         if ips is None:
             unresolved.append(d)
             kept.append(d)
-        elif all(covered(ip) for ip in ips):
+        elif all(covered(ip) for ip in ips) and all(covered(ip) for ip in www_ips or []):
             dropped.append((d, ips))
         else:
             kept.append(d)
