@@ -26,6 +26,17 @@ steamserver.net
 # отдельной зоне, поэтому нужен явно. Апекс akamaized.net добавлять НЕЛЬЗЯ:
 # на нём сидят все клиенты Akamai, а не только Steam.
 steampipe.akamaized.net
+# Blizzard / Battle.net — Diablo и прочие игры. Игровые серверы покрыты
+# подсетями AS57976 в custom-subnets.txt, но вход в аккаунт, патчи и
+# загрузка контента живут на Amazon/Google/Akamai — их берём доменами.
+# Записи матчатся по суффиксу, поэтому покрывают и поддомены вида
+# eu.actual.battle.net, oauth.battle.net, eu.patch.battle.net.
+battle.net
+blizzard.com
+battlenet.com.cn
+diablo3.com
+blzddist1-a.akamaihd.net
+blzddist2-a.akamaihd.net
 levenhuk.com
 weborama-tech.ru
 yandexcloud.net
