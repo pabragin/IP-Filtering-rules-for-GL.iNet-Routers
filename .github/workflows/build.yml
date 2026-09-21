@@ -35,7 +35,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add filter.txt report.md
+          git add filter.txt xray-routing.json report.md
           if ! git diff --cached --quiet; then
             git commit -m "Автообновление filter.txt ($(date -u +%F))"
             git pull --rebase origin main
