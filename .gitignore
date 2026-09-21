@@ -1,1 +1,17 @@
 __pycache__/
+
+# Конфиги и ключи VPN: содержат UUID клиентов, приватные ключи Reality,
+# shortId и адреса серверов. В репозиторий не попадают никогда.
+amnezia_xray_config.json
+*vless*.txt
+*vless*.json
+server-params.json
+server-keys.txt
+config.template.json
+client_config.json
+phone-*.txt
+
+# Скриншоты и выгрузки, которые кладутся в корень по ходу работы
+*.png
+*.jpg
+*.jpeg
