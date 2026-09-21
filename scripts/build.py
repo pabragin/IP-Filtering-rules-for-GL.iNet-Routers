@@ -20,8 +20,9 @@
    адресах, а www отдаётся сторонним CDN (например, apple.com против
    www.apple.com). Запись апекса матчится роутером по суффиксу и покрывает
    поддомены, поэтому исключать её можно, только когда www тоже покрыт.
-4. Пишет filter.txt (домены + IPv4 + IPv6, по одной записи на строку)
-   и report.md с результатами проверки покрытия.
+4. Пишет filter.txt (домены + IPv4 + IPv6, по одной записи на строку),
+   xray-routing.json (те же данные как routing-правила Xray для роутера,
+   где поднят свой клиент) и report.md с результатами проверки покрытия.
 """
 
 import ipaddress
@@ -173,6 +174,26 @@ def main() -> int:
     out = kept + [str(n) for n in nets_v4] + [str(n) for n in nets_v6]
     (ROOT / "filter.txt").write_text("\n".join(out) + "\n")
 
+    # Те же данные в виде routing-правил Xray: роутер скачивает файл и
+    # подставляет его в конфиг целиком, без разбора списков на своей стороне.
+    routing = {
+        "rules": [
+            {
+                "type": "field",
+                "domain": [f"domain:{d}" for d in kept],
+                "outboundTag": "direct",
+            },
+            {
+                "type": "field",
+                "ip": [str(n) for n in nets_v4] + [str(n) for n in nets_v6],
+                "outboundTag": "direct",
+            },
+        ]
+    }
+    (ROOT / "xray-routing.json").write_text(
+        json.dumps(routing, ensure_ascii=False, separators=(",", ":")) + "\n"
+    )
+
     report = [
         "# Отчёт сборки filter.txt",
         "",
@@ -194,6 +215,7 @@ def main() -> int:
     (ROOT / "report.md").write_text("\n".join(report) + "\n")
 
     print(f"filter.txt: {len(out)} строк ({len(kept)} доменов, {len(nets_v4)} IPv4, {len(nets_v6)} IPv6)")
+    print(f"xray-routing.json: {len(kept)} доменов, {len(nets_v4) + len(nets_v6)} подсетей")
     print(f"Исключено доменов, покрытых подсетями: {len(dropped)}; не резолвятся: {len(unresolved)}")
     return 0
 
