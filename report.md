@@ -3,7 +3,7 @@
 - Подсетей IPv4: **10593**, IPv6: **2393**
 - Источники подсетей: ipverse (RIR) + BGP по RU-AS
 - BGP добавил поверх ipverse: **1 207 552** адресов IPv4
-- Доменов в источнике: **36**, оставлено в filter.txt: **34**, покрыто подсетями (исключено): **2**
+- Доменов в источнике: **42**, оставлено в filter.txt: **40**, покрыто подсетями (исключено): **2**
 
 ## Исключённые домены (все адреса уже внутри подсетей)
 
@@ -35,6 +35,11 @@
 - `icloud.com`
 - `huggingface.co`
 - `hf.co`
+- `comfy.org`
+- `github.com`
+- `pypi.org`
+- `pythonhosted.org`
+- `pytorch.org`
 
 ## Не резолвятся (оставлены на всякий случай)
 
@@ -49,3 +54,4 @@
 - `cdn-apple.com`
 - `halitsuman.com`
 - `vk-analytics.ru`
+- `githubusercontent.com`

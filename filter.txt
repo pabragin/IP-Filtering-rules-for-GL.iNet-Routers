@@ -32,6 +32,12 @@ doubleclick.net
 icloud.com
 huggingface.co
 hf.co
+comfy.org
+github.com
+githubusercontent.com
+pypi.org
+pythonhosted.org
+pytorch.org
 2.16.20.0/23
 2.16.53.0/24
 2.17.144.0/23
