@@ -62,3 +62,12 @@ icloud.com
 # работают напрямую и быстрее, чем через VPN.
 huggingface.co
 hf.co
+# ComfyUI: реестр нод и ассеты (comfy.org), код нод и релизы (GitHub),
+# Python-пакеты (PyPI, PyTorch). Напрямую работают и в разы быстрее,
+# чем через VPN: релизы GitHub 1,6 МБ/с против 0,25 МБ/с.
+comfy.org
+github.com
+githubusercontent.com
+pypi.org
+pythonhosted.org
+pytorch.org
