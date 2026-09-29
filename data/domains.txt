@@ -58,3 +58,7 @@ crashlytics.com
 vk-analytics.ru
 doubleclick.net
 icloud.com
+# Hugging Face: сайт, API и загрузка моделей (CDN на hf.co) из России
+# работают напрямую и быстрее, чем через VPN.
+huggingface.co
+hf.co
