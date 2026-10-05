@@ -71,3 +71,18 @@ githubusercontent.com
 pypi.org
 pythonhosted.org
 pytorch.org
+# 2026-10-06: сервисы, которые из России открываются напрямую без обхода
+# (проверено с роутера: TLS и HTTP отвечают). Через VPN они шли зря.
+# Медиа:
+twitch.tv
+reddit.com
+tiktok.com
+threads.net
+# Google: поиск, Play и загрузки. Запись google.com матчится по суффиксу и
+# уводит напрямую все поддомены, в том числе гео-зависимые (Gemini).
+google.com
+play.googleapis.com
+dl.google.com
+# Dev-инструменты: Maven Central и API GitHub (github.com уже выше).
+repo.maven.apache.org
+api.github.com
