@@ -1,9 +1,9 @@
 # Отчёт сборки filter.txt
 
-- Подсетей IPv4: **10608**, IPv6: **2396**
+- Подсетей IPv4: **10610**, IPv6: **2396**
 - Источники подсетей: ipverse (RIR) + BGP по RU-AS
-- BGP добавил поверх ipverse: **1 213 440** адресов IPv4
-- Доменов в источнике: **42**, оставлено в filter.txt: **40**, покрыто подсетями (исключено): **2**
+- BGP добавил поверх ipverse: **1 214 208** адресов IPv4
+- Доменов в источнике: **51**, оставлено в filter.txt: **49**, покрыто подсетями (исключено): **2**
 
 ## Исключённые домены (все адреса уже внутри подсетей)
 
@@ -40,6 +40,15 @@
 - `pypi.org`
 - `pythonhosted.org`
 - `pytorch.org`
+- `twitch.tv`
+- `reddit.com`
+- `tiktok.com`
+- `threads.net`
+- `google.com`
+- `play.googleapis.com`
+- `dl.google.com`
+- `repo.maven.apache.org`
+- `api.github.com`
 
 ## Не резолвятся (оставлены на всякий случай)
 
