@@ -86,3 +86,6 @@ dl.google.com
 # Dev-инструменты: Maven Central и API GitHub (github.com уже выше).
 repo.maven.apache.org
 api.github.com
+# LM Studio качает модели со своего домена (models.lmstudio.ai, Cloudflare),
+# а не с hf.co; из России открывается напрямую, через VPN упирался в 56 Мбит/с.
+lmstudio.ai
